@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<!-- ========================= SECTION MAIN ========================= -->
+		<section class="section-intro padding-y-sm">
+			<div class="container">
+				<div class="intro-banner-wrap">
+					<img
+						src="{% static 'images/banners/1.png' %}"
+						class="img-fluid rounded"
+					/>
+				</div>
+			</div>
+			<!-- container //  -->
+		</section>
+		<!-- ========================= SECTION MAIN END// ========================= -->
+
+		<!-- ========================= SECTION  ========================= -->
+		<section class="section-name padding-y-sm">
+			<div class="container">
+				<header class="section-heading">
+					<a
+						href="{% url 'store'%}"
+						class="btn btn-outline-primary float-right"
+						>See all</a
+					>
+					<h3 class="section-title">Popular products</h3>
+				</header>
+				<!-- sect-heading -->
+
+				<div class="row">
+					{% for product in products %}
+					<div class="col-md-3">
+						<div class="card card-product-grid">
+							<a href="{{product.get_url}}" class="img-wrap">
+								<img src="{{ product.images.url }}" />
+							</a>
+							<figcaption class="info-wrap">
+								<a href="{{product.get_url}}" class="title"
+									> {{ product.product_name }} </a
+								>
+								<div class="price mt-1">cfa {{ product.price }}</div>
+								<!-- price-wrap.// -->
+								<div class="rating-star">
+								<span>
+<i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-o {% endif %}" aria-hidden="true"></i>
+
+<i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-o {% endif %}" aria-hidden="true"></i>
+
+<i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-o {% endif %}" aria-hidden="true"></i>
+
+<i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-o {% endif %}" aria-hidden="true"></i>
+
+<i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+							</div>
+							</figcaption>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<!-- row.// -->
+			</div>
+			<!-- container // -->
+		</section>
+		<!-- ========================= SECTION  END// ========================= -->
+<section class="section-name padding-y-sm text-center">
+	<div class="container">
+	<div class="card">
+	<div class="row no-gutters">
+		<aside class="col-md-6">
+<article class="gallery-wrap"> 
+	<div class="img-wrap">
+	   <a href="#"><img src="{% static 'images/banners/brand2.jpg' %}"></a>
+	</div> <!-- img-big-wrap.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<main class="col-md-6 border-left">
+<article class="content-body">
+
+<div class="mb-3">
+
+	<var class="h4">Votre Boutique</var>
+	<br> 
+	<br>
+
+</div> 
+
+<ul class="list-unstyled mt-3 mb-4">
+	<li>Sun Beach, Calvaire Fidjrossè, Cotonou, Bénin</li><br>
+              <li>Lundi - Samedi, 10h - 20:30min</li> <br>
+              <li>Dimanche, Fermer</li><br>
+              <li>info@sosoden.com</li><br>
+            </ul>
+            <a href="https://goo.gl/maps/ocvGPKeuB4t4BKyW6" class="btn btn-primary"><i class="fa fa-map-marker"> Direction </i></a>
+</article> <!-- product-info-aside .// -->
+		</main> <!-- col.// -->
+	</div> <!-- row.// -->
+</div>
+</div> <!-- card.// -->
+</section>
+		
+	</body>
+</html>
+
+
+{% endblock %}
